@@ -1,1 +1,23 @@
-hola
+import random
+
+class Semilla:
+
+  def __init__(self, x, y, tiempo_crecimiento):
+
+  self.x = x
+  self.y = y
+  self.tiempo_crecimiento = tiempo_crecimiento
+
+  def crecer(self):
+      if self.tiempo_crecimiento > 0:
+          self.tiempo_crecimiento -= 1
+          print("La semilla esta creciendo...")
+          print("Tiempo restante:", self.tiempo_crecimiento)
+
+  def germinar(self):
+      if self.tiempo_crecimiento <= 0:
+          print("La semilla germino y se convirtio en planta")
+          return True
+      return False
+
+
