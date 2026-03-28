@@ -46,6 +46,90 @@ class Refugio:
             print("El insecto no está en el refugio")
 
 
+def simulacion():
+
+    # creación de objetos con valores aleatorios
+    semilla = Semilla(
+        random.randint(0, 5),
+        random.randint(0, 5),
+        random.randint(3, 5)
+    )
+
+    refugio = Refugio(
+        random.randint(0, 5),
+        random.randint(0, 5),
+        2
+    )
+
+    insecto = {
+        "posicion": (
+            random.randint(0, 5),
+            random.randint(0, 5)
+        ),
+        "energia": random.randint(5, 8)
+    }
+
+    ciclo = 1
+
+    print("Posición inicial de la semilla:", semilla.x, semilla.y)
+    print("Tiempo inicial de crecimiento:", semilla.tiempo_crecimiento)
+
+    print("Posición del refugio:", refugio.x, refugio.y)
+    print("Capacidad del refugio:", refugio.capacidad)
+
+    print("Posición del insecto:", insecto["posicion"])
+    print("Energía inicial del insecto:", insecto["energia"])
+
+    print("\n--- Iniciando simulación ---")
+
+    while True:
+
+        print("\nCiclo", ciclo)
+
+        print("\nOpciones:")
+        print("1. Avanzar ciclo")
+        print("2. Usar refugio")
+        print("3. Mostrar estado")
+        print("4. Salir")
+
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+
+            semilla.crecer()
+
+            if semilla.germinar():
+
+                print("Fin de la simulación")
+
+                break
+
+            ciclo += 1
+
+        elif opcion == "2":
+
+            refugio.proteger(insecto)
+
+            refugio.recuperar_energia(insecto)
+
+        elif opcion == "3":
+
+            print("\nEstado actual:")
+            print("Tiempo restante:", semilla.tiempo_crecimiento)
+            print("Energía del insecto:", insecto["energia"])
+
+        elif opcion == "4":
+
+            print("Simulación finalizada")
+
+            break
+
+        else:
+
+            print("Opción inválida")
+
+
+simulacion()
 
 
 
