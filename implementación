@@ -1,23 +1,55 @@
 import random
 
 class Semilla:
+    def __init__(self, x, y, tiempo_crecimiento):
+       self.x = x
+       self.y = y
+       self.tiempo_crecimiento = tiempo_crecimiento
 
-  def __init__(self, x, y, tiempo_crecimiento):
+    def crecer(self):
+        if self.tiempo_crecimiento > 0:
+            self.tiempo_crecimiento -= 1
+            print("La semilla esta creciendo...")
+            print("Tiempo restante:", self.tiempo_crecimiento)
 
-  self.x = x
-  self.y = y
-  self.tiempo_crecimiento = tiempo_crecimiento
+    def germinar(self):
+        if self.tiempo_crecimiento <= 0:
+            print("La semilla germino y se convirtio en planta")
+            return True
+        return False
 
-  def crecer(self):
-      if self.tiempo_crecimiento > 0:
-          self.tiempo_crecimiento -= 1
-          print("La semilla esta creciendo...")
-          print("Tiempo restante:", self.tiempo_crecimiento)
+class Refugio:
+    def __init__(self, x, y, capacidad):
+        self.x = x
+        self.y = y
+        self.capacidad = capacidad
 
-  def germinar(self):
-      if self.tiempo_crecimiento <= 0:
-          print("La semilla germino y se convirtio en planta")
-          return True
-      return False
+    def proteger(self, insecto):
+        if insecto["posicion"] == (self.x, self.y):
+            print("El refugio está protegiendo al insecto")
+
+        else:
+            print("El insecto no está en la posición del refugio")
+
+    def recuperar_energia(self, insecto):
+        if insecto["posicion"] == (self.x, self.y):
+
+            energia_recuperada = random.randint(1, 3)
+
+            insecto["energia"] += energia_recuperada
+
+            print("Energía recuperada:", energia_recuperada)
+
+            print("Energía actual:", insecto["energia"])
+
+        else:
+            print("El insecto no está en el refugio")
+
+
+
+
+
+
+
 
 
